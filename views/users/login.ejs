@@ -1,0 +1,81 @@
+<%- include('../layouts/header.ejs')  %>
+<style>
+.col-md-9 {
+    flex: 0 auto;
+    width: 30%;   
+}
+.align-items-center {
+    align-items: baseline;
+}
+.p-5 {
+    padding: 1rem!important;
+}
+
+
+</style>
+
+
+<section class="vh-100 bg-image"
+  style="background-color: rgb(255, 255, 255); ">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5" style=" border-radius: 10px; background-color: darkgray;" >
+              <h2 class="text-uppercase text-center mb-5" style="color: aliceblue;">Login</h2>
+              <form action="/login" method="post">
+                <div class="form-outline mb-4">
+                  <input type="email" id="email" name="email" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example3cg" style="color: aliceblue;">Your Email</label>
+                  <p style="color: red;" id="p1" ></p>
+
+                </div>
+                <div class="form-outline mb-4">
+                  <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cg" style="color: aliceblue;">Password</label>
+                  <p style="color: red;" id="p2" ></p>
+
+                </div>
+                <div class="d-flex justify-content-center">
+                  <button type="submit"
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body " onclick="validation()" value="login" style="background-color: rgb(255, 255, 255); ">login</button>
+                </div>
+                <a href="/register" style="color: rgb(80, 84, 86);">Not A User ?</a>
+              </form>
+              <% 
+              if(typeof message !=='undefined'){
+                %>
+                <h4><%= message %></h4>
+                <%
+              }
+             %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function validation() {
+     const email = document.getElementById("email").value;
+     const password = document.getElementById("password").value;
+
+
+     if( email === ""){ 
+
+      document.getElementById("p1").innerHTML='email must be fillout'
+     }
+      
+      
+  
+     if(password ===""){ 
+      
+      document.getElementById("p2").innerHTML='password must be fillout'
+}
+    }
+  </script>
+</section>
+
+
+  <%- include('../layouts/footer.ejs')  %>

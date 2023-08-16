@@ -1,0 +1,63 @@
+<%- include('../layouts/header.ejs')%>
+
+<div class="container">
+  
+<nav class="navbar navbar-light bg-light" >
+  <div class="container-fluid">
+    <form class="d-flex" action="/admin/search" method="post">
+      <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    
+    <a class="btn btn-primary" href="/admin/home">BACK TO HOME</a>
+    <a class="btn btn-info" href="/admin/add-user">Add user</a>
+  </div>
+</nav>
+
+
+<table class="table" style="background-color: rgb(83, 83, 83);" id="datatable">
+  <thead>
+    <tr style="color: rgb(17, 1, 11);">
+      <th scope="col">No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      
+      <th>Action<th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if(users){
+    for(let i=0;i < users.length;i++){%>
+    <tr style="color: aliceblue;">
+
+      <td><%= i+1 %></td>
+      <td ><%= users[i].name %></td>
+            <td><%= users[i].email %></td>
+            
+
+              <td>
+                <a href="/admin/edit-user?id=<%= users[i]._id %>" style="color: aqua;">Edit</a>
+                <a href="/admin/delete-user?id=<%= users[i]._id %>" style="color: rgb(248, 10, 10);">Delete</a>
+              </td>  
+    </tr>
+ 
+  </tbody>
+
+  <%}
+
+}else{%>
+    
+    <tr>
+      <td colspan="5">users not Found</td>
+    </tr>
+    <%}%>
+</table>
+<script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script>$(document).ready( function () {
+  $('#datatable').DataTable();
+} );</script>
+</div>
+<%- include('../layouts/footer.ejs')%>
+

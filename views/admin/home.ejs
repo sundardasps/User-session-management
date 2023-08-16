@@ -1,0 +1,21 @@
+<% include('../layouts/header.ejs')  %>
+
+
+<h1>Welcome, <%= admin.name %> </h1>
+
+<a href="/admin/dashboard">dashboard</a>
+
+<table style="width: 50%;">
+
+    <tr>
+        <tr>Email :</tr>
+        <tr><%= admin.email %></tr>
+
+    </tr>
+
+</table>
+
+<a href="/admin/logout"> logout</a>
+
+
+<% include('../layouts/footer.ejs')  %>
